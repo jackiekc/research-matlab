@@ -1,8 +1,15 @@
-%This is a function that performs ActiveMask Segmentation and corresponds
-%to the pseudo code reported in Algorithm 3
+% COPYRIGHT
+%       This file is part of the Matlab code provided for the following paper:
 %
-%       This file is part of the Matlab code provided for the following
-%       reproducible paper:
+%		Kuan-Chieh Jackie Chen, Yiyi Yu, Ruiqin Li, Hao-Chih Lee, Ge Yang, Jelena Kovacevic,
+%		"Adaptive active-mask image segmentation for quantitative characterization of 
+%		mitochondrial morphology,"
+%		2012 19th IEEE International Conference on Image Processing (ICIP), pp.2033-2036, Sept. 30 2012-Oct. 3 2012
+%
+%       Authors: Kuan-Chieh Jackie Chen
+%       Last Modified: Jan 26, 2012.
+%
+%       This file is modified from the code provided in the following paper:
 %
 %       Gowri Srinivasa, Matthew C. Fickus, Yusong Guo, Adam D. Linstedt, Jelena Kovacevic,
 %       "Active mask segmentation of fluorescence microscope cell images",
@@ -28,8 +35,6 @@
 %       Authors: Gowri Srinivasa and Matthew C. Fickus
 %       Latest modifications: April 22, 2008.
 % 
-%       Authors: Jackie Chen
-%       Latest modifications: Jan 26, 2012.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -202,27 +207,17 @@ for k=K:-1:K_0 %from K, the coarsest resolution to K_0, the desired resolution
         end
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %Region-based distributing function 
+        % Adaptive Region-based distributing function 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
-        %beta is obtained from "high-low" 
-%         figure,subplot(2,1,1),imshow(f,[]);
-%         subplot(2,1,2),imshow(org_f,[]);
-%         R=alpha.*erf(beta*(f-gamma)); %any function, such as the sigmoid, can be used in lieu of erf
         %R is a coarse separation between foreground and
         %background regions with cusps between touching foreground objects
         ad_sigma = ad_sigma_max / 2^k;
 %       Guassian filter
         estimated_bg = imfilter(double(org_f),fspecial('gaussian',ceil(ad_sigma*6), ad_sigma ), 'replicate' );
-%       Lowpass filter
-%         lowfilt = fftshift(lowpassfilter(ceil(ad_sigma*[6 6]), 0.5, 5));
-%         lowfilt = lowfilt./sum(lowfilt(:));
-%         estimated_bg = imfilter(double(org_f),lowfilt, 'replicate' );
 
-%         R = alpha.*erf( beta*(f - estimated_bg * (1-gamma/100)) );
         R = alpha.*erf( beta*(f - (estimated_bg - gamma) ) );
 %         matname = sprintf('R_%d_%d_%d',ceil(gamma),ceil(ad_sigma_max),k);
-        matname = sprintf('R_%d_%d_%d',ceil(gamma),ceil(ad_sigma_max),k);
 %         save( matname, 'R', 'f', 'estimated_bg', 'gamma', 'beta', 'alpha', 'ad_sigma_max', 'ad_sigma', 'k' );
 %         figure,imshow(R,[]);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

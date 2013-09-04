@@ -1,9 +1,17 @@
+% COPYRIGHT
+%       This file is part of the Matlab code provided for the following paper:
+%
+%		Kuan-Chieh Jackie Chen, Yiyi Yu, Ruiqin Li, Hao-Chih Lee, Ge Yang, Jelena Kovacevic,
+%		"Adaptive active-mask image segmentation for quantitative characterization of 
+%		mitochondrial morphology,"
+%		2012 19th IEEE International Conference on Image Processing (ICIP), pp.2033-2036, Sept. 30 2012-Oct. 3 2012
+%
+%       Authors: Kuan-Chieh Jackie Chen
+%		Data Created: Jan 26, 2012
+% 		Last Modified: Feb 22, 2013
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function psi = Batch_Mito_adaptive( f_mito, savepath, fname, gammas, ad_sigma_maxs )
 % psi = Batch_Mito_adaptive( f_mito, savepath, fname, gammas, ad_sigma_maxs )
-%
-% AUTHOR(S): Jackie Chen
-% Data Created: Jan 26, 2012
-% Last Modified: Feb 22, 2013
 %
 % PURPOSE:
 % A wrapper for batch processing using Adaptive Active Masks

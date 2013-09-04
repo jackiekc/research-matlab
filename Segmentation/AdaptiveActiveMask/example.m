@@ -1,3 +1,14 @@
+% COPYRIGHT
+%       This file is part of the Matlab code provided for the following paper:
+%
+%		Kuan-Chieh Jackie Chen, Yiyi Yu, Ruiqin Li, Hao-Chih Lee, Ge Yang, Jelena Kovacevic,
+%		"Adaptive active-mask image segmentation for quantitative characterization of 
+%		mitochondrial morphology,"
+%		2012 19th IEEE International Conference on Image Processing (ICIP), pp.2033-2036, Sept. 30 2012-Oct. 3 2012
+%
+%       Authors: Kuan-Chieh Jackie Chen
+% 		Last Modified: 2012
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 source_foldername = 'ctl_20110927_larva1_1_a3_1';
 
 fimgmat = 'example.mat';
